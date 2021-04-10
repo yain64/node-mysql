@@ -4,6 +4,7 @@ const app = express()
 const path = require('path')
 const createError = require('http-errors')
 const logger = require('./middlewares/logger-mw')
+const expressSession = require('./middlewares/session-mw')
 
 
 /************* Init ***************/
@@ -20,6 +21,7 @@ app.locals.TITLE = '도서관리시스템'
 app.use(logger('common'))
 app.use(express.json())	// post -> req.body
 app.use(express.urlencoded({ extended: false }))
+app.use(expressSession())
 
 
 /************* Router ***************/
